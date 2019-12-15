@@ -22,7 +22,7 @@ public class Ejer3 {
 			BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("archivo." + extension[1])));){
-			dos.writeBytes("GET " + recurso + " HTTP/1.0");
+			dos.writeBytes("GET " + recurso + " HTTP/1.1");
 			dos.flush();
 			System.out.println("hola");
 			String leido = br.readLine();

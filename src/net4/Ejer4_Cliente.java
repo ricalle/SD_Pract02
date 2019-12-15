@@ -10,7 +10,7 @@ import java.net.Socket;
 
 public class Ejer4_Cliente {
 	public static void main(String[] args) {
-		enviador2partes("ejer4/pruebas");
+		enviador2partes("ejer4/prueba.txt");
 	}
 	
 	public static void enviador2partes(String nomArchivo) {

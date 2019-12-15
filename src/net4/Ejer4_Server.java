@@ -9,12 +9,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Ejer4_Server {
-	public static void main(String nomArchivo) {
+	public static void main(String[] args) {
 		try(ServerSocket server = new ServerSocket(5656)){
 			while(true) {
 				try(Socket clte = server.accept();
 					DataInputStream dis = new DataInputStream(clte.getInputStream())){
-					String[] info = dis.readLine().split(" ");
+					String[] info = dis.readLine().trim().split(" ");
 					System.out.println(info[0] + " " + info[1]);
 					DataOutputStream dos = new DataOutputStream(new FileOutputStream(info[0]));
 					byte[]datos = new byte[Integer.parseInt(info[1])];
