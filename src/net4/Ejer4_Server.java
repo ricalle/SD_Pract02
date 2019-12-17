@@ -25,7 +25,7 @@ public class Ejer4_Server {
 						bw.write(leido + "\r\n");
 						leido = dis.readLine();
 					}
-					System.out.println(leido);
+					System.out.println(leido); //pinta null
 					leido = dis.readLine();
 					while(leido != null && !leido.equals("Acabe.\r\n")) {
 						bw.write(leido + "\r\n");
