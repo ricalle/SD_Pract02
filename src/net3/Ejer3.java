@@ -22,20 +22,19 @@ public class Ejer3 {
 			BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("archivo." + extension[1])));){
-			dos.writeBytes("GET " + recurso + " HTTP/1.1");
-			dos.flush();
-			System.out.println("hola");
-			String leido = br.readLine();
-			System.out.println("esto: " + leido);
-			while(leido != null && !leido.equals("\r\n")) {
-				leido = br.readLine();
-				System.out.println(leido);
-			}
-			while(leido != null) {
-				bw.write(leido);
+			dos.writeBytes("GET " + recurso + " HTTP/1.0\r\n\r\n");
+			dos.flush();String leido = br.readLine();
+			System.out.println(leido);
+			while(leido != null && !leido.trim().equals("")) {
 				leido = br.readLine();
 			}
-			bw.flush();
+			char[] elemento = new char[1024*4];
+			int leidos = br.read(elemento);
+			while(leidos != -1) {
+				bw.write(elemento, 0, leidos);
+				leidos = br.read(elemento);
+			}
+			
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
